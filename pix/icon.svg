@@ -1,0 +1,54 @@
+<svg viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>p5js Badge</title>
+
+  <defs>
+    <clipPath id="badgeClip">
+      <circle cx="340" cy="340" r="230"/>
+    </clipPath>
+    <clipPath id="innerClip">
+      <circle cx="340" cy="340" r="210"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="340" cy="340" r="234" fill="#ED225D" opacity="0.18"/>
+  <circle cx="340" cy="340" r="230" fill="#0D0D1A"/>
+  <circle cx="340" cy="340" r="230" fill="none" stroke="#ED225D" stroke-width="4"/>
+
+  <g clip-path="url(#badgeClip)" stroke="#ffffff" stroke-width="0.5" opacity="0.05" fill="none">
+    <line x1="140" y1="240" x2="540" y2="240"/>
+    <line x1="140" y1="290" x2="540" y2="290"/>
+    <line x1="140" y1="340" x2="540" y2="340"/>
+    <line x1="140" y1="390" x2="540" y2="390"/>
+    <line x1="140" y1="440" x2="540" y2="440"/>
+    <line x1="230" y1="110" x2="230" y2="570"/>
+    <line x1="290" y1="110" x2="290" y2="570"/>
+    <line x1="340" y1="110" x2="340" y2="570"/>
+    <line x1="390" y1="110" x2="390" y2="570"/>
+    <line x1="450" y1="110" x2="450" y2="570"/>
+  </g>
+
+  <g clip-path="url(#innerClip)">
+    <circle cx="310" cy="300" r="90" fill="#00FFD1" opacity="0.07"/>
+    <circle cx="400" cy="370" r="70" fill="#ED225D" opacity="0.10"/>
+    <circle cx="270" cy="400" r="60" fill="#A855F7" opacity="0.09"/>
+
+    <circle cx="310" cy="295" r="62" fill="#0D0D1A" stroke="#00FFD1" stroke-width="2.5"/>
+    <circle cx="310" cy="295" r="60" fill="#00FFD1" opacity="0.15"/>
+    <circle cx="310" cy="295" r="44" fill="#00FFD1" opacity="0.55"/>
+
+    <polygon points="400,240 460,370 340,370" fill="#0D0D1A" stroke="#ED225D" stroke-width="2.5"/>
+    <polygon points="400,240 460,370 340,370" fill="#ED225D" opacity="0.45"/>
+
+    <rect x="245" y="380" width="76" height="76" rx="5" fill="#0D0D1A" stroke="#FFC72C" stroke-width="2.5"/>
+    <rect x="248" y="383" width="70" height="70" rx="4" fill="#FFC72C" opacity="0.40"/>
+
+    <circle cx="432" cy="410" r="30" fill="#0D0D1A" stroke="#C084FC" stroke-width="2"/>
+    <circle cx="432" cy="410" r="27" fill="#C084FC" opacity="0.40"/>
+
+    <path d="M150 475 C185 450 215 500 250 475 S315 450 350 475 S415 500 450 475 S490 450 520 475"
+          fill="none" stroke="#00FFD1" stroke-width="1.8" opacity="0.5"/>
+  </g>
+
+  <circle cx="340" cy="340" r="210" fill="none" stroke="#ED225D" stroke-width="1" opacity="0.3"/>
+
+</svg>

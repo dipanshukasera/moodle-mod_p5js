@@ -1,0 +1,103 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_p5js/view_page
+
+    Example context (json):
+    {}
+}}
+<div class="mod_p5js_editor_wrapper">
+    <!-- Top Toolbar -->
+    <div class="p5js-toolbar d-flex align-items-center justify-content-between px-3 border-bottom">
+        <div class="d-flex align-items-center">
+            <button id="p5js_run" class="btn btn-icon text-success mr-2" title="Play">
+                <i class="fa fa-play-circle fa-2x"></i>
+            </button>
+            <button id="p5js_stop" class="btn btn-icon text-danger mr-3" title="Stop">
+                <i class="fa fa-stop-circle fa-2x"></i>
+            </button>
+            <div class="custom-control custom-checkbox mr-3">
+                <input type="checkbox" class="custom-control-input" id="p5js_auto_refresh" checked>
+                <label class="custom-control-label small text-muted" for="p5js_auto_refresh">Auto-refresh</label>
+            </div>
+            <span class="text-muted small ml-2 font-weight-bold">{{name}}</span>
+        </div>
+        <div class="d-flex align-items-center">
+             <button id="p5js_save" class="btn btn-sm btn-outline-primary mr-2">
+                <i class="fa fa-save"></i> Save All
+            </button>
+            <span class="badge badge-light p-2 border">p5.js v1.9.0</span>
+        </div>
+    </div>
+
+    <div class="p5js-main-content d-flex">
+        <!-- Left Sidebar: File Explorer -->
+        <div id="p5js_sidebar" class="p5js-sidebar border-right bg-light flex-column d-flex" style="width: 200px; min-width: 200px; transition: all 0.3s ease;">
+            <div class="p5js-sidebar-header d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                <span class="small font-weight-bold text-uppercase text-muted sidebar-text">Sketch Files</span>
+                <div class="d-flex">
+                    <button id="p5js_add_file" class="btn btn-link p-0 text-muted mr-2 sidebar-text" title="Add File">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <button id="p5js_toggle_sidebar" class="btn btn-link p-0 text-muted" title="Toggle Sidebar">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="p5js_file_list" class="list-group list-group-flush small sidebar-text">
+                <!-- Files will be injected here -->
+            </div>
+        </div>
+
+        <!-- Middle: Code Editor -->
+        <div class="p5js-editor-container flex-grow-1 position-relative" style="background: #fff;">
+             <!-- File Tab Indicator -->
+             <div class="p5js-file-tab px-3 py-1 bg-white border-bottom small text-muted font-italic d-flex align-items-center">
+                <button id="p5js_expand_sidebar" class="btn btn-link p-0 text-muted mr-2 d-none" title="Show Sidebar">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+                <i class="fa fa-file-code-o mr-1"></i> <span id="p5js_active_filename">sketch.js</span>
+             </div>
+             <div class="p5js-editor-wrapper" style="height: calc(100vh - 180px);">
+                <textarea id="p5js_editor" 
+                    class="form-control" 
+                    spellcheck="false"
+                    style="font-family: 'Fira Code', 'Courier New', monospace; font-size: 14px; height: 100%; border: none; padding: 20px; resize: none; border-radius: 0;"></textarea>
+             </div>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="p5js-preview-container border-left bg-light" style="width: 450px; min-width: 450px;">
+            <div class="p5js-preview-header px-3 py-2 border-bottom bg-white">
+                <span class="small font-weight-bold text-uppercase text-muted">Preview</span>
+            </div>
+            <div class="p5js-preview-body d-flex justify-content-center p-0" style="background: #f0f0f0; height: calc(100vh - 180px); overflow: auto;">
+                <iframe id="p5js_preview_iframe" 
+                    sandbox="allow-scripts allow-pointer-lock allow-same-origin"
+                    style="width: 100%; height: 100%; border: none; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro / Description below -->
+    <div class="p5js-footer px-3 py-2 bg-white border-top small text-muted">
+         {{{intro}}}
+    </div>
+</div>
+
+{{#js}}
+require(['mod_p5js/init'], function(Init) {
+    Init.init('p5js_preview_iframe', {{{js_code_json}}}, {{cmid}});
+});
+{{/js}}

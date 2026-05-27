@@ -1,0 +1,79 @@
+.mod_p5js_editor_wrapper {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+}
+
+.p5js-toolbar {
+    height: 60px;
+    background: #fff;
+}
+
+.p5js-main-content {
+    flex-grow: 1;
+}
+
+.p5js-sidebar .list-group-item {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid transparent;
+}
+
+.p5js-sidebar .list-group-item:hover {
+    background: #e9ecef;
+}
+
+.p5js-sidebar .list-group-item.active {
+    background: #dee2e6;
+    color: #000;
+    border-left-color: #ED225D;
+    font-weight: bold;
+}
+
+.p5js-file-delete {
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.list-group-item:hover .p5js-file-delete {
+    opacity: 0.6;
+}
+
+.p5js-file-delete:hover {
+    opacity: 1 !important;
+    color: #dc3545;
+}
+
+.btn-icon {
+    padding: 0;
+    line-height: 1;
+    background: none;
+    border: none;
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
+}
+
+#p5js_sidebar.sidebar-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden;
+}
+
+.sidebar-collapsed .sidebar-text {
+    display: none !important;
+}
+
+#p5js_toggle_sidebar i {
+    transition: transform 0.3s;
+}
+
+.sidebar-collapsed #p5js_toggle_sidebar i {
+    transform: rotate(180deg);
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/p5js/db" VERSION="20240203" COMMENT="XMLDB file for Moodle mod/p5js"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+    <TABLES>
+        <TABLE NAME="p5js" COMMENT="p5.js instances">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="intro" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+            </INDEXES>
+        </TABLE>
+        <TABLE NAME="p5js_submissions" COMMENT="p5.js user submissions">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="p5jsid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Link to p5js table"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="js_code" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="p5jsid" TYPE="foreign" FIELDS="p5jsid" REFTABLE="p5js" REFFIELDS="id"/>
+            </KEYS>
+            <INDEXES>
+                <INDEX NAME="p5jsid_userid" UNIQUE="true" FIELDS="p5jsid, userid"/>
+            </INDEXES>
+        </TABLE>
+    </TABLES>
+</XMLDB>
